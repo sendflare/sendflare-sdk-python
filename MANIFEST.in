@@ -1,0 +1,5 @@
+include README.md
+include LICENSE
+recursive-include sendflare_sdk *.py
+recursive-exclude tests *
+
