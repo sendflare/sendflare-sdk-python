@@ -53,22 +53,6 @@ class SendEmailResp(CommonResponse):
     """Send Email response entity"""
     pass
 
-
-@dataclass
-class ContactItem:
-    """Contact info entity"""
-    status: str = ""
-    email_address: str = ""
-    language: str = ""
-    first_name: str = ""
-    last_name: str = ""
-    phone_number: str = ""
-    birthday: str = ""
-    company: str = ""
-    vip_level: int = 0
-    amount: str = ""
-
-
 @dataclass
 class ListContactReq(PaginateReq):
     """Get Contact list request entity"""
@@ -78,7 +62,7 @@ class ListContactReq(PaginateReq):
 @dataclass
 class ListContactResp(PaginateResp):
     """Get Contact list response entity"""
-    data: List[ContactItem] = field(default_factory=list)
+    list: List[Dict[str, str]] = field(default_factory=list)
 
 
 @dataclass
