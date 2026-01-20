@@ -22,7 +22,7 @@ from .models import (
 class SendflareClient:
     """Sendflare SDK Client"""
 
-    BASE_URL = "https://api.sendflare.io"
+    BASE_URL = "https://api.sendflare.com"
     REQUEST_TIMEOUT = 10  # seconds
 
     def __init__(self, token: str):

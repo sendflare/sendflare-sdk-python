@@ -27,8 +27,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://docs.sendflare.io"
-Documentation = "https://docs.sendflare.io"
+Homepage = "https://docs.sendflare.com"
+Documentation = "https://docs.sendflare.com"
 Repository = "https://github.com/sendflare/sendflare-sdk-python"
 "Bug Tracker" = "https://github.com/sendflare/sendflare-sdk-python/issues"
 

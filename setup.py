@@ -13,10 +13,10 @@ setup(
     description="The SDK for sendflare service written in Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://docs.sendflare.io",
+    url="https://docs.sendflare.com",
     project_urls={
         "Bug Tracker": "https://github.com/sendflare/sendflare-sdk-python/issues",
-        "Documentation": "https://docs.sendflare.io",
+        "Documentation": "https://docs.sendflare.com",
         "Source Code": "https://github.com/sendflare/sendflare-sdk-python",
     },
     packages=find_packages(exclude=["tests", "tests.*"]),
