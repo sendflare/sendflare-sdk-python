@@ -14,8 +14,7 @@ from .models import (
     SaveContactReq,
     SaveContactResp,
     DeleteContactReq,
-    DeleteContactResp,
-    ContactItem
+    DeleteContactResp
 )
 
 
@@ -80,12 +79,8 @@ class SendflareClient:
             page=response.get('page', 0),
             page_size=response.get('pageSize', 0),
             total_count=response.get('totalCount', 0),
-            data=[]
+            list=response.get('data', []) if isinstance(response.get('data'), list) else []
         )
-        
-        # Map contact items
-        if 'data' in response and isinstance(response['data'], list):
-            result.data = [self._map_to_object(item, ContactItem) for item in response['data']]
         
         return result
 
