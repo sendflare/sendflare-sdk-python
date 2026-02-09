@@ -74,11 +74,14 @@ class SendflareClient:
 
         response = self._make_request("GET", path, params=params)
         
-        # Handle nested data structure
+        # Handle nested data structure with pagination
         data = None
         if 'data' in response and isinstance(response['data'], dict):
             from .models import ContactListData
             data = ContactListData(
+                page=response['data'].get('page', 0),
+                page_size=response['data'].get('pageSize', 0),
+                total_count=response['data'].get('totalCount', 0),
                 list=response['data'].get('list', [])
             )
         
@@ -89,9 +92,6 @@ class SendflareClient:
             success=response.get('success', False),
             message=response.get('message', ''),
             ts=response.get('ts', 0),
-            page=response.get('page', 0),
-            page_size=response.get('pageSize', 0),
-            total_count=response.get('totalCount', 0),
             data=data
         )
         

@@ -61,7 +61,13 @@ class ListContactReq(PaginateReq):
 
 @dataclass
 class ContactListData:
-    """Nested data structure containing the contact list"""
+    """Nested data structure containing pagination and contact list"""
+    # PaginateResp fields
+    page: int = 0
+    page_size: int = 0
+    total_count: int = 0
+    
+    # Contact list
     list: List[Dict[str, str]] = field(default_factory=list)
 
 
@@ -75,12 +81,7 @@ class ListContactResp:
     message: str = ""
     ts: int = 0
     
-    # PaginateResp fields
-    page: int = 0
-    page_size: int = 0
-    total_count: int = 0
-    
-    # Data wrapper with list
+    # Data wrapper with pagination and list
     data: Optional[ContactListData] = None
 
 
