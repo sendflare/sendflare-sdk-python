@@ -74,12 +74,25 @@ class SendflareClient:
 
         response = self._make_request("GET", path, params=params)
         
+        # Handle nested data structure
+        data = None
+        if 'data' in response and isinstance(response['data'], dict):
+            from .models import ContactListData
+            data = ContactListData(
+                list=response['data'].get('list', [])
+            )
+        
         # Map the response
         result = ListContactResp(
+            request_id=response.get('requestId', ''),
+            code=response.get('code', 0),
+            success=response.get('success', False),
+            message=response.get('message', ''),
+            ts=response.get('ts', 0),
             page=response.get('page', 0),
             page_size=response.get('pageSize', 0),
             total_count=response.get('totalCount', 0),
-            list=response.get('data', []) if isinstance(response.get('data'), list) else []
+            data=data
         )
         
         return result

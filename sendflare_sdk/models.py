@@ -60,9 +60,28 @@ class ListContactReq(PaginateReq):
 
 
 @dataclass
-class ListContactResp(PaginateResp):
-    """Get Contact list response entity"""
+class ContactListData:
+    """Nested data structure containing the contact list"""
     list: List[Dict[str, str]] = field(default_factory=list)
+
+
+@dataclass
+class ListContactResp:
+    """Get Contact list response entity"""
+    # CommonResponse fields
+    request_id: str = ""
+    code: int = 0
+    success: bool = False
+    message: str = ""
+    ts: int = 0
+    
+    # PaginateResp fields
+    page: int = 0
+    page_size: int = 0
+    total_count: int = 0
+    
+    # Data wrapper with list
+    data: Optional[ContactListData] = None
 
 
 @dataclass
