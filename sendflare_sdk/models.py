@@ -37,14 +37,18 @@ class SendEmailReq:
     to: str
     subject: str
     body: str
+    cc: List[str] = field(default_factory=list)
+    bcc: List[str] = field(default_factory=list)
 
-    def to_dict(self) -> Dict[str, str]:
+    def to_dict(self) -> Dict[str, Any]:
         """Convert to dictionary"""
         return {
             'from': self.from_,
             'to': self.to,
             'subject': self.subject,
-            'body': self.body
+            'body': self.body,
+            'cc': self.cc,
+            'bcc': self.bcc,
         }
 
 

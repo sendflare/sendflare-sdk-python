@@ -29,7 +29,9 @@ class TestSendflareClient(unittest.TestCase):
             from_="test@example.com",
             to="to@example.com",
             subject="test",
-            body="test email"
+            body="test email",
+            cc=["cc@example.com"],
+            bcc=["bcc@example.com"]
         )
 
         print(f"Request: {req}")
