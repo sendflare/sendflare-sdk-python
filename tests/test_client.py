@@ -31,13 +31,36 @@ class TestSendflareClient(unittest.TestCase):
             subject="test",
             body="test email",
             cc=["cc@example.com"],
-            bcc=["bcc@example.com"]
+            bcc=["bcc@example.com"],
+            reply_to=["replyTo@example.com"]
         )
 
         print(f"Request: {req}")
 
         try:
             resp = self.client.send_email(req)
+            print(f"Response: {resp}")
+        except Exception as e:
+            print(f"Expected error without valid token: {e}")
+            # This is expected without a valid token
+            self.assertTrue(True)
+
+    def test_batch_send_email(self):
+        """Test batch send email"""
+        req = BatchSendEmailReq(
+            from_="test@example.com",
+            to=["to@example.com"],
+            subject="test",
+            body="test email",
+            cc=["cc@example.com"],
+            bcc=["bcc@example.com"],
+            reply_to=["replyTo@example.com"]
+        )
+
+        print(f"Request: {req}")
+
+        try:
+            resp = self.client.batch_send_email(req)
             print(f"Response: {resp}")
         except Exception as e:
             print(f"Expected error without valid token: {e}")

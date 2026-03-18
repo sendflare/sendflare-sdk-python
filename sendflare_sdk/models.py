@@ -39,7 +39,7 @@ class SendEmailReq:
     body: str
     cc: List[str] = field(default_factory=list)
     bcc: List[str] = field(default_factory=list)
-
+    reply_to: List[str] = field(default_factory=list)
     def to_dict(self) -> Dict[str, Any]:
         """Convert to dictionary"""
         return {
@@ -49,12 +49,40 @@ class SendEmailReq:
             'body': self.body,
             'cc': self.cc,
             'bcc': self.bcc,
+            'replyTo': self.reply_to,
         }
-
 
 @dataclass
 class SendEmailResp(CommonResponse):
     """Send Email response entity"""
+    pass
+
+@dataclass
+class BatchSendEmailReq:
+    """Batch Send Email request entity"""
+    from_: str
+    to: List[str]
+    subject: str
+    body: str
+    cc: List[str] = field(default_factory=list)
+    bcc: List[str] = field(default_factory=list)
+    reply_to: List[str] = field(default_factory=list)
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert to dictionary"""
+        return {
+            'from': self.from_,
+            'to': self.to,
+            'subject': self.subject,
+            'body': self.body,
+            'cc': self.cc,
+            'bcc': self.bcc,
+            'replyTo': self.reply_to,
+        }
+
+
+@dataclass
+class BatchSendEmailResp(CommonResponse):
+    """Batch Send Email response entity"""
     pass
 
 @dataclass

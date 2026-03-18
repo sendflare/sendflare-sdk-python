@@ -52,6 +52,25 @@ class SendflareClient:
         response = self._make_request("POST", path, data=data)
         return self._map_to_object(response, SendEmailResp)
 
+    def batch_send_email(self, req: BatchSendEmailReq) -> BatchSendEmailResp:
+        """
+        Send a batch of emails
+
+        Args:
+            req: Batch send email request
+
+        Returns:
+            Batch send email response
+
+        Raises:
+            Exception: If request fails
+        """
+        path = "/v1/batchSend"
+        data = req.to_dict()
+
+        response = self._make_request("POST", path, data=data)
+        return self._map_to_object(response, BatchSendEmailResp)
+        
     def get_contact_list(self, req: ListContactReq) -> ListContactResp:
         """
         Get contact list
